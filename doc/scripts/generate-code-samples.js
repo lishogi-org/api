@@ -13,7 +13,7 @@ if(process.argv[2] != 'skip-pre-bundle')
         }
 
 //now load that file
-var SwaggerFile = require('../specs/lichess-api.yaml');
+var SwaggerFile = require('../specs/lishogi-api.yaml');
 
 var results = SwaggerSnippet.getSwaggerSnippets(SwaggerFile,
         [

@@ -6,11 +6,11 @@ const fetch = require('node-fetch');
 const port = 8087;
 const client = new oauth.AuthorizationCode({
   client: {
-    id: yourLichessOauthAppId,
-    secret: yourLichessOauthAppSecret
+    id: yourLishogiOauthAppId,
+    secret: yourLishogiOauthAppSecret
   },
   auth: {
-    tokenHost: 'https://oauth.lichess.org',
+    tokenHost: 'https://oauth.lishogi.org',
     authorizePath: '/oauth/authorize',
     tokenPath: '/oauth'
   },
@@ -21,14 +21,14 @@ const client = new oauth.AuthorizationCode({
 const redirectUri = `http://localhost:${port}/callback`;
 const authorizationUri = client.authorizeURL({
   redirect_uri: redirectUri,
-  scope: ['preference:read'], // see https://lichess.org/api#section/Introduction/Rate-limiting
+  scope: ['preference:read'], // see https://lishogi.org/api#section/Introduction/Rate-limiting
   state: Math.random().toString(36).substring(2)
 });
 /* --- End of your app config --- */
 
 const app = express();
 
-app.get('/', (_, res) => res.send('Hello<br><a href="/auth">Log in with lichess</a>'));
+app.get('/', (_, res) => res.send('Hello<br><a href="/auth">Log in with lishogi</a>'));
 
 app.get('/auth', (_, res) => res.redirect(authorizationUri));
 
@@ -37,12 +37,12 @@ app.get('/callback', async (req, res) => {
     code: req.query.code,
     redirect_uri: redirectUri
   });
-  const user = await fetch('https://lichess.org/api/account', {
+  const user = await fetch('https://lishogi.org/api/account', {
     headers: {
       'Authorization': `Bearer ${token.token.access_token}`
     }
   }).then(res => res.json());
-  res.send(`<h1>Success!</h1>Your lichess user info: <pre>${JSON.stringify(user)}</pre>`);
+  res.send(`<h1>Success!</h1>Your lishogi user info: <pre>${JSON.stringify(user)}</pre>`);
 });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
