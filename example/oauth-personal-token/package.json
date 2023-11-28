@@ -1,14 +1,13 @@
 {
-  "name": "oauth-personal-token-example",
-  "version": "1.0.0",
-  "description": "Lishogi OAuth personal token example",
+  "name": "lishogi-oauth-personal-token-example",
+  "private": true,
   "main": "index.js",
-  "keywords": [],
-  "author": "Thibault Duplessis",
   "license": "MIT",
-  "devDependencies": {},
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "dotenv": "^16"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "scripts": {
     "start": "node index.js"

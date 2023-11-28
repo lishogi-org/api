@@ -1,12 +1,9 @@
-const fetch = require('node-fetch');
+require('dotenv').config();
 
-/* Create your personal token on https://lishogi.org/account/oauth/token */
-const personalToken = '';
+const headers = {
+  Authorization: 'Bearer ' + process.env.lishogiToken,
+};
 
-fetch('https://lishogi.org/api/account', {
-    headers: {
-      'Authorization': 'Bearer ' + personalToken
-    }
-  })
+fetch('https://lishogi.org/api/account', { headers })
   .then(res => res.json())
   .then(console.log);

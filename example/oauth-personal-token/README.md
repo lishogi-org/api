@@ -1,4 +1,4 @@
-# Lishogi OAuth API with a personal token
+# Lichess OAuth API with a personal token
 
 You can make OAuth requests without going through the authorization code flow.
 
@@ -11,7 +11,8 @@ and you can generate lots of them.
 
 ## Run this example
 
-1. Create a personal token at https://lishogi.org/account/oauth/token
-2. Edit index.js with your token
-3. Install dependencies with `yarn install`
-4. Run with `node index.js`
+1. Copy `.env.default` to `.env`
+2. Create a [personal token](https://lishogi.org/account/oauth/token)
+3. Set the token in `.env`
+4. Install dependencies with `npm install`
+5. Run with `node index.js`

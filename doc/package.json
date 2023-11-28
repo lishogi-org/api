@@ -1,0 +1,14 @@
+{
+  "name": "lishogi-api-doc",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "@redocly/cli": "^1.4.0",
+    "@stoplight/spectral-cli": "^6"
+  },
+  "scripts": {
+    "lint": "spectral lint --fail-severity=warn specs/*.yaml",
+    "build": "npx @redocly/cli build-docs specs/lishogi-api.yaml --output public/index.html",
+    "serve": "npx @redocly/cli preview-docs specs/lishogi-api.yaml --port 8089"
+  }
+}
